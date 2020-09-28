@@ -52,7 +52,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{textAlign:'center'}}>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm state={this.state} handleInputChange={this.handleInputChange} handleAddItem = {this.handleAddItem} handleClearCompleted={this.handleClearCompleted} />
         <TodoList state={this.state} handleInputChange={this.handleInputChange} toggleCompleted={this.toggleCompleted} />
