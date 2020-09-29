@@ -59,7 +59,7 @@ handleSearchClick = e => {
    return item.task.split(' ').some(word=>{
      return word === this.state.searchInput;
    })
-  })});
+  }), searchInput: ''});
 }
 
   render() {

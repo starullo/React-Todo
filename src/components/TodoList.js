@@ -16,7 +16,7 @@ const TodoList = (props) => {
 
         return (
             <List>
-                {props.state.searchedBoolean ?props.state.searchedItems.map(item=>{
+                {props.state.searchedBoolean ? props.state.searchedItems.map(item=>{
                         return (
                             <Todo toggleCompleted={props.toggleCompleted} item={item} key={item.id} todo={item.task} />
                         )

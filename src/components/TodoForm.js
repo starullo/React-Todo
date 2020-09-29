@@ -4,6 +4,11 @@ import styled from 'styled-components';
 const Flexbox = styled.div`
     display: flex;
     justify-content: space-evenly;
+
+     input, button {
+         border: solid 2px black;
+         margin: 1% auto;
+     }
 `
 
 const TodoForm = (props) => {
@@ -19,7 +24,7 @@ const TodoForm = (props) => {
             <button onClick={props.handleAddItem}>Create Task</button>
             <button onClick={props.handleClearCompleted}>Clear Completed</button>
             </Flexbox>
-            <Flexbox>
+            <div>
                 <input onKeyPress={e=>{
                 if (e.key === 'Enter') {
                     props.handleSearchClick(e)
@@ -27,7 +32,7 @@ const TodoForm = (props) => {
             }} name='searchInput' type='text' value={props.state.searchInput} placeholder='Search for specific items'
                 onChange={props.handleInputChange}/>
                 <button onClick={props.handleSearchClick}>Search</button>
-            </Flexbox>
+            </div>
             </>
         )
 
