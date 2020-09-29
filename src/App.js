@@ -12,12 +12,16 @@ class App extends React.Component {
     this.state = {
       textInput: '',
       listItems: [],
+      searchInput: '',
+      searchedBoolean: false,
+      searchedItems: []
     }
   }
 
   handleInputChange = e => {
+    const {name} = e.target;
     this.setState({
-      textInput: e.target.value
+      [name]: e.target.value
     })
   }
 
@@ -50,11 +54,19 @@ class App extends React.Component {
     })
   }
 
+handleSearchClick = e => {
+  this.setState({searchedBoolean: !this.state.searchedBoolean, searchedItems: this.state.listItems.filter(item=>{
+   return item.task.split(' ').some(word=>{
+     return word === this.state.searchInput;
+   })
+  })});
+}
+
   render() {
     return (
       <div style={{textAlign:'center'}}>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm state={this.state} handleInputChange={this.handleInputChange} handleAddItem = {this.handleAddItem} handleClearCompleted={this.handleClearCompleted} />
+        <TodoForm handleSearchClick={this.handleSearchClick} state={this.state} handleInputChange={this.handleInputChange} handleAddItem = {this.handleAddItem} handleClearCompleted={this.handleClearCompleted} />
         <TodoList state={this.state} handleInputChange={this.handleInputChange} toggleCompleted={this.toggleCompleted} />
       </div>
     );

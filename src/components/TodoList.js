@@ -5,17 +5,22 @@ import Todo from './Todo';
 import styled from 'styled-components';
 
 const List = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 2% auto;
+    width: 60%;
 `
+
+
 
 const TodoList = (props) => {
 
 
         return (
             <List>
-                {props.state.listItems.map(item=>{
+                {props.state.searchedBoolean ?props.state.searchedItems.map(item=>{
+                        return (
+                            <Todo toggleCompleted={props.toggleCompleted} item={item} key={item.id} todo={item.task} />
+                        )
+                    }) : props.state.listItems.map(item=>{
                     return (<Todo toggleCompleted={props.toggleCompleted} item={item} key={item.id} todo={item.task} />)
                 })}
             </List>
